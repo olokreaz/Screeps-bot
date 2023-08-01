@@ -1,12 +1,20 @@
 package game.utils
 
-import game.utils.Profiler
 import screeps.api.Game
 
-class Logger(n : String)
+class Logger(NameClass : String)
 {
-	fun log(msg : String) : Unit =
+	fun log(msg : String) =
 		console.log("[${this.name}][${Game.time}] --> $msg")
 
-	private val name : String = n
+	fun log(msg : String, profiler : Profiler) =
+		console.log("[${this.name}][${Game.time}][%$profiler] --> $msg")
+
+	fun log(NameFunction : String, msg : String) =
+		console.log("[${this.name}][$NameFunction][${Game.time}] --> $msg")
+
+	fun log(NameFunction : String, msg : String, profiler : Profiler) =
+		console.log("[${this.name}][$NameFunction][${Game.time}][%$profiler] --> $msg")
+
+	private val name : String = NameClass
 }

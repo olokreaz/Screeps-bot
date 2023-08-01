@@ -4,13 +4,17 @@ import screeps.api.*
 import screeps.utils.unsafe.delete
 
 import game.utils.Profiler
+import game.utils.Logger
 
 
 object AppController
 {
 	fun loop()
 	{
+
+		val profiler = Profiler()
 		clearDeadCreepsMemory()
+
 
 	}
 
@@ -21,11 +25,11 @@ object AppController
 		{
 			if (Game.creeps[creepName] == null)
 			{
-				val timer : Profiler = Profiler()
 				delete(Memory.creeps[creepName])
-
+				logger.log("clearDeadCreepsMemory", "Delete $creepName;")
 			}
 		}
 	}
 
+	val logger : Logger = Logger("Global")
 }

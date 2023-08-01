@@ -31,6 +31,8 @@ class Profiler
 
 	override fun toString() : String
 	{
+		if (endTime == 0.0)
+			return (Game.cpu.getUsed() - startTime).toString()
 		return this.elapsedTime.toString()
 	}
 }
