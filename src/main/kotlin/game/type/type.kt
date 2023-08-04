@@ -1,9 +1,13 @@
 package game.type
 
+import screeps.api.RoomPosition
+import screeps.api.*
+
 
 enum class ERole(vstr : String)
 {
-	HARVEST("Harvester"),
+	HARVESTER("Harvester"),
+	UPGRADER("Upgrader"),
 	BUILD("builder"),
 	DEFENCE("Defender"),
 	ATTACK("Attacker"),
@@ -11,10 +15,15 @@ enum class ERole(vstr : String)
 	NONE("undefined");
 }
 
-enum class ETask // [ Creep ]
+data class Target(
+	var pos : RoomPosition? = null,
+	var id : String? = null,
+	var room : Room? = null,
+	var type : StructureConstant? = null,
+                 )
 {
-	Harvest,
-	Build,
-	Upgrade,
-	Attack,
+	override fun toString() : String
+	{
+		return "Target(pos=$pos, id=$id, room=$room, type=${type})"
+	}
 }
