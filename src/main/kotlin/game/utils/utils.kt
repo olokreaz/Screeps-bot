@@ -28,6 +28,12 @@ class Profiler
 {
 	private var startTime : Double = 0.0
 	private var endTime : Double = 0.0
+	private var name : String = ""
+
+	constructor(s : String = "")
+	{
+		name = s
+	}
 
 	init
 	{
@@ -57,9 +63,9 @@ class Profiler
 	}
 }
 
-fun executeEveryTicks(n : Int, action : () -> Unit)
+fun executeTicks(ticks : Int, action : () -> Unit)
 {
-	if (Game.time % n == 0)
+	if (Game.time % ticks == 0)
 	{
 		action()
 	}
